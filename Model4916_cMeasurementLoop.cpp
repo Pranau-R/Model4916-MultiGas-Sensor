@@ -1262,6 +1262,10 @@ void cMeasurementLoop::deepSleepPrepare(void)
     {
     gpioenable.enableVdd1(false);
     gpiopower.setVdd1(false);
+    gpiopower.configVall(false);
+    delay(2);
+    gpioenable.configAll(false);
+    delay(2);
 
     Serial.end();
     Wire.end();
