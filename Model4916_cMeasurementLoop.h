@@ -198,9 +198,8 @@ public:
     // version parameters
     static constexpr std::uint8_t kMajor = 1;
     static constexpr std::uint8_t kMinor = 5;
-    static constexpr std::uint8_t kPatch = 1;
-    static constexpr std::uint8_t kLocal = 15;
-
+    static constexpr std::uint8_t kPatch = 2;
+    static constexpr std::uint8_t kLocal = 1;
 
     enum OPERATING_FLAGS : uint32_t
         {
