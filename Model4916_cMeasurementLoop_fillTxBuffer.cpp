@@ -205,7 +205,7 @@ cMeasurementLoop::fillTxBuffer(
             );
 
         b.putV(mData.gases.uVNO2 / 1000000);
-        b.put2uf(this->uflt16(mData.gases.NO2/5));
+        b.put2uf(this->uflt16(mData.gases.NO2/10));
         }
 
     // put O3
@@ -217,7 +217,7 @@ cMeasurementLoop::fillTxBuffer(
             );
 
         b.putV(mData.gases.uVO3 / 1000000);
-        b.put2uf(this->uflt16(mData.gases.O3/20));
+        b.put2uf(this->uflt16(mData.gases.O3/30));
         }
 
     // put SO2
@@ -229,7 +229,7 @@ cMeasurementLoop::fillTxBuffer(
             );
 
         b.putV(mData.gases.uVSO2 / 1000000);
-        b.put2uf(this->uflt16(mData.gases.SO2/20));
+        b.put2uf(this->uflt16(mData.gases.SO2/30));
         }
 
     // put co2ppm
@@ -244,23 +244,6 @@ cMeasurementLoop::fillTxBuffer(
 
         b.put2uf(this->uflt16(mData.co2ppm.CO2ppm / 40000));
         }
-
-    uint8_t buf;
-    gCatena.SafePrintf(
-        "The Tx Buffer is: "
-        );
-    for (unsigned i = 0; i < b.getn(); ++i)
-        {
-        buf = b.getbase()[i];
-        gCatena.SafePrintf(
-            "%02x",
-            buf
-            );
-        }
-
-    gCatena.SafePrintf(
-        "\n"
-        );
 
     gLed.Set(McciCatena::LedPattern::Off);
     }
