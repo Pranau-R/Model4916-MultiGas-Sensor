@@ -199,7 +199,7 @@ public:
     static constexpr std::uint8_t kMajor = 1;
     static constexpr std::uint8_t kMinor = 5;
     static constexpr std::uint8_t kPatch = 2;
-    static constexpr std::uint8_t kLocal = 1;
+    static constexpr std::uint8_t kLocal = 2;
 
     enum OPERATING_FLAGS : uint32_t
         {

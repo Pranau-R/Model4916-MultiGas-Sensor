@@ -935,6 +935,8 @@ void cMeasurementLoop::updateSynchronousMeasurements()
         this->m_data.gases.uVCO = this->m_data.gases.uVCO * 1000.00f * 1000.00f;
         auto concentration = getCOConcentration(this->m_data.gases.uVCO);
         this->m_data.gases.CO = concentration;
+        if (concentration < 0.00f)
+            this->m_data.gases.CO = 0.00f;
         this->m_data.flags2 |= Flags::CO;
 
         /* Read O3 voltage */
@@ -945,6 +947,8 @@ void cMeasurementLoop::updateSynchronousMeasurements()
         this->m_data.gases.uVO3 = this->m_data.gases.uVO3 * 1000.00f * 1000.00f;
         concentration = getO3Concentration(this->m_data.gases.uVO3);
         this->m_data.gases.O3 = concentration;
+        if (concentration < 0.00f)
+            this->m_data.gases.O3 = 0.00f;
         this->m_data.flags2 |= Flags::O3;
 
         /* Read SO2 voltage */
@@ -955,6 +959,8 @@ void cMeasurementLoop::updateSynchronousMeasurements()
         this->m_data.gases.uVSO2 = this->m_data.gases.uVSO2 * 1000.00f * 1000.00f;
         concentration = getSO2Concentration(this->m_data.gases.uVSO2);
         this->m_data.gases.SO2 = concentration;
+        if (concentration < 0.00f)
+            this->m_data.gases.SO2 = 0.00f;
         this->m_data.flags2 |= Flags::SO2;
 
         /* Read NO2 voltage */
@@ -965,6 +971,8 @@ void cMeasurementLoop::updateSynchronousMeasurements()
         this->m_data.gases.uVNO2 = this->m_data.gases.uVNO2 * 1000.00f * 1000.00f;
         concentration = getNO2Concentration(this->m_data.gases.uVNO2);
         this->m_data.gases.NO2 = concentration;
+        if (concentration < 0.00f)
+            this->m_data.gases.NO2 = 0.00f;
         this->m_data.flags2 |= Flags::NO2;
         }
 

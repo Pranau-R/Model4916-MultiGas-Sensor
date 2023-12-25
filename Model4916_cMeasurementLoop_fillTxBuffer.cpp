@@ -193,8 +193,7 @@ cMeasurementLoop::fillTxBuffer(
             );
 
         b.putV(mData.gases.uVCO / 1000000);
-        b.put2sf(mData.gases.CO);
-        // b.put2sf(TxBufferBase_t::f2sflt16(mData.gases.CO));
+        b.put2uf(this->uflt16(mData.gases.CO/1000));
         }
 
     // put NO2
@@ -206,8 +205,7 @@ cMeasurementLoop::fillTxBuffer(
             );
 
         b.putV(mData.gases.uVNO2 / 1000000);
-        b.put2sf(mData.gases.NO2);
-        // b.put2sf(TxBufferBase_t::f2sflt16(mData.gases.NO2));
+        b.put2uf(this->uflt16(mData.gases.NO2/5));
         }
 
     // put O3
@@ -219,8 +217,7 @@ cMeasurementLoop::fillTxBuffer(
             );
 
         b.putV(mData.gases.uVO3 / 1000000);
-        b.put2sf(mData.gases.O3);
-        // b.put2sf(TxBufferBase_t::f2sflt16(mData.gases.O3));
+        b.put2uf(this->uflt16(mData.gases.O3/20));
         }
 
     // put SO2
@@ -232,8 +229,7 @@ cMeasurementLoop::fillTxBuffer(
             );
 
         b.putV(mData.gases.uVSO2 / 1000000);
-        b.put2sf(mData.gases.SO2);
-        // b.put2sf(TxBufferBase_t::f2sflt16(mData.gases.SO2));
+        b.put2uf(this->uflt16(mData.gases.SO2/20));
         }
 
     // put co2ppm
