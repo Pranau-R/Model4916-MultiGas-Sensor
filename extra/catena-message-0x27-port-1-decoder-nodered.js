@@ -323,8 +323,8 @@ function Decoder(bytes, port) {
 
     if (flags & 0x10) {
         // we have gps co-ordinates
-        decoded.latitude = DecodeGpsCoordinates(Parse) * 9.0;
-        decoded.longitude = DecodeGpsCoordinates(Parse) * 18.0;
+        decoded.latitude = DecodeGpsCoordinates(Parse) * 256.0;
+        decoded.longitude = DecodeGpsCoordinates(Parse) * 512.0;
     }
 
     if (flags & 0x20) {
