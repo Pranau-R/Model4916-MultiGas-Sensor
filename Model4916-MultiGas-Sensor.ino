@@ -46,7 +46,7 @@ static_assert(
     );
 
 // Also change version in Model4916_cMeasurementLoop.h
-static const char sVersion[] = "1.5.2-pre3";
+static const char sVersion[] = "1.5.2";
 
 /****************************************************************************\
 |
