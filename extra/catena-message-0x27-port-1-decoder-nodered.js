@@ -360,21 +360,25 @@ function Decoder(bytes, port) {
     if (flags2 & 0x1) {
         // we have carbon monoxide
         decoded.vCO = DecodeV(Parse);
+        decoded.COppm = DecodeUflt16(Parse) * 1000;
     }
 
     if (flags2 & 0x2) {
         // we have nitrogen-dioxide
         decoded.vNO2 = DecodeV(Parse);
+        decoded.NO2ppm = DecodeUflt16(Parse) * 10;
     }
 
     if (flags2 & 0x4) {
         // we have ozone gas
         decoded.vO3 = DecodeV(Parse);
+        decoded.O3ppm = DecodeUflt16(Parse) * 30;
     }
 
     if (flags2 & 0x8) {
         // we have sulphur-dioxide
         decoded.vSO2 = DecodeV(Parse);
+        decoded.SO2ppm = DecodeUflt16(Parse) * 30;
     }
 
     if (flags & 0x10) {

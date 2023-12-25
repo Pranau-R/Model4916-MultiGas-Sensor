@@ -73,7 +73,7 @@ class cMeasurementFormat : public cMeasurementBase
     {
 public:
     // buffer size for uplink data
-    static constexpr size_t kTxBufferSize = 64;// 58;
+    static constexpr size_t kTxBufferSize = 64;
 
     // message format
     static constexpr uint8_t kMessageFormat = 0x27;
@@ -199,7 +199,7 @@ public:
     static constexpr std::uint8_t kMajor = 1;
     static constexpr std::uint8_t kMinor = 5;
     static constexpr std::uint8_t kPatch = 2;
-    static constexpr std::uint8_t kLocal = 1;
+    static constexpr std::uint8_t kLocal = 3;
 
     enum OPERATING_FLAGS : uint32_t
         {
