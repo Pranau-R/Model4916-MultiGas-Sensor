@@ -51,6 +51,40 @@ void cMeasurementLoop::begin()
         this->m_UplinkTimer.begin(this->m_txCycleSec * 1000);
         }
 
+    gCatena.SafePrintf("Spec Sensor sensitivity are:\n");
+    pFram->getField(
+        cFramStorage::StandardKeys::kCOSensitivity,
+        m_IsenseCO
+        );
+    gCatena.SafePrintf("  CO: %d.%02d nA/ppm\n",
+        (int)m_IsenseCO,
+        gMeasurementLoop.getDecimal(m_IsenseCO)
+        );
+    pFram->getField(
+        cFramStorage::StandardKeys::kO3Sensitivity,
+        m_IsenseO3
+        );
+    gCatena.SafePrintf("  O3: %d.%02d nA/ppm\n",
+        (int)m_IsenseO3 * (-1),
+        gMeasurementLoop.getDecimal(m_IsenseO3)
+        );
+    pFram->getField(
+        cFramStorage::StandardKeys::kSO2Sensitivity,
+        m_IsenseSO2
+        );
+    gCatena.SafePrintf("  SO2: %d.%02d nA/ppm\n",
+        (int)m_IsenseSO2,
+        gMeasurementLoop.getDecimal(m_IsenseSO2)
+        );
+    pFram->getField(
+        cFramStorage::StandardKeys::kNO2Sensitivity,
+        m_IsenseNO2
+        );
+    gCatena.SafePrintf("  NO2: %d.%02d nA/ppm\n",
+        (int)m_IsenseNO2 * (-1),
+        gMeasurementLoop.getDecimal(m_IsenseNO2)
+        );
+
     this->m_sno = 0;
     if (this->m_Sht.begin())
         {
@@ -333,10 +367,6 @@ void cMeasurementLoop::configGps()
 float cMeasurementLoop::getCOConcentration(float uVoltage)
     {
     float gasConcentration;
-    pFram->getField(
-        cFramStorage::StandardKeys::kCOSensitivity,
-        m_IsenseCO
-        );
 
     float mVsenseCO = m_IsenseCO * m_RgainCO / 1000.00f;
     gasConcentration = ((uVoltage / 1000.00f) - m_mVgasZeroCO) / mVsenseCO;
@@ -347,10 +377,6 @@ float cMeasurementLoop::getCOConcentration(float uVoltage)
 float cMeasurementLoop::getO3Concentration(float uVoltage)
     {
     float gasConcentration;
-    pFram->getField(
-        cFramStorage::StandardKeys::kO3Sensitivity,
-        m_IsenseO3
-        );
 
     m_IsenseO3 = m_IsenseO3 * (-1);
     float mVsenseO3 = m_IsenseO3 * m_RgainO3 / 1000.00f;
@@ -362,10 +388,6 @@ float cMeasurementLoop::getO3Concentration(float uVoltage)
 float cMeasurementLoop::getSO2Concentration(float uVoltage)
     {
     float gasConcentration;
-    pFram->getField(
-        cFramStorage::StandardKeys::kSO2Sensitivity,
-        m_IsenseSO2
-        );
 
     float mVsenseSO2 = m_IsenseSO2 * m_RgainSO2 / 1000.00f;
     gasConcentration = ((uVoltage / 1000.00f) - m_mVgasZeroSO2) / mVsenseSO2;
@@ -376,10 +398,6 @@ float cMeasurementLoop::getSO2Concentration(float uVoltage)
 float cMeasurementLoop::getNO2Concentration(float uVoltage)
     {
     float gasConcentration;
-    pFram->getField(
-        cFramStorage::StandardKeys::kNO2Sensitivity,
-        m_IsenseNO2
-        );
 
     m_IsenseNO2 = m_IsenseNO2 * (-1);
     float mVsenseNO2 = m_IsenseNO2 * m_RgainNO2 / 1000.00f;
